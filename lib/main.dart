@@ -1,4 +1,5 @@
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart' show AnimatedNotchBottomBar, BottomBarItem, NotchBottomBarController;
+import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart'
+    show AnimatedNotchBottomBar, BottomBarItem, NotchBottomBarController;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -8,9 +9,13 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // 디버그 표시를 없앤다.
+      debugShowCheckedModeBanner: false,
+
       title: 'Animated Notch Bottom Bar',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -63,81 +68,81 @@ class _MyHomePageState extends State<MyHomePage> {
       extendBody: true,
       bottomNavigationBar: (bottomBarPages.length <= maxCount)
           ? AnimatedNotchBottomBar(
-        /// Provide NotchBottomBarController
-        notchBottomBarController: _controller,
-        color: Colors.white,
-        showLabel: false,
-        notchColor: Colors.black87,
-
-        /// restart app if you change removeMargins
-        removeMargins: false,
-        bottomBarWidth: 500,
-        durationInMilliSeconds: 300,
-        bottomBarItems: [
-          const BottomBarItem(
-            inActiveItem: Icon(
-              Icons.home_filled,
-              color: Colors.blueGrey,
-            ),
-            activeItem: Icon(
-              Icons.home_filled,
-              color: Colors.blueAccent,
-            ),
-            itemLabel: 'Page 1',
-          ),
-          const BottomBarItem(
-            inActiveItem: Icon(
-              Icons.star,
-              color: Colors.blueGrey,
-            ),
-            activeItem: Icon(
-              Icons.star,
-              color: Colors.blueAccent,
-            ),
-            itemLabel: 'Page 2',
-          ),
-
-          ///svg example
-          BottomBarItem(
-            inActiveItem: SvgPicture.asset(
-              'assets/search_icon.svg',
-              color: Colors.blueGrey,
-            ),
-            activeItem: SvgPicture.asset(
-              'assets/search_icon.svg',
+              /// Provide NotchBottomBarController
+              notchBottomBarController: _controller,
               color: Colors.white,
-            ),
-            itemLabel: 'Page 3',
-          ),
-          const BottomBarItem(
-            inActiveItem: Icon(
-              Icons.settings,
-              color: Colors.blueGrey,
-            ),
-            activeItem: Icon(
-              Icons.settings,
-              color: Colors.pink,
-            ),
-            itemLabel: 'Page 4',
-          ),
-          const BottomBarItem(
-            inActiveItem: Icon(
-              Icons.person,
-              color: Colors.blueGrey,
-            ),
-            activeItem: Icon(
-              Icons.person,
-              color: Colors.yellow,
-            ),
-            itemLabel: 'Page 5',
-          ),
-        ],
-        onTap: (index) {
-          /// perform action on tab change and to update pages you can update pages without pages
-          print('current selected index $index');
-          _pageController.jumpToPage(index);
-        },
-      )
+              showLabel: false,
+              notchColor: Colors.black87,
+
+              /// restart app if you change removeMargins
+              removeMargins: false,
+              bottomBarWidth: 500,
+              durationInMilliSeconds: 300,
+              bottomBarItems: [
+                const BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.home_filled,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.home_filled,
+                    color: Colors.blueAccent,
+                  ),
+                  itemLabel: 'Page 1',
+                ),
+                const BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.star,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.star,
+                    color: Colors.blueAccent,
+                  ),
+                  itemLabel: 'Page 2',
+                ),
+
+                ///svg example
+                BottomBarItem(
+                  inActiveItem: SvgPicture.asset(
+                    'assets/search_icon.svg',
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: SvgPicture.asset(
+                    'assets/search_icon.svg',
+                    color: Colors.white,
+                  ),
+                  itemLabel: 'Page 3',
+                ),
+                const BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.settings,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.settings,
+                    color: Colors.pink,
+                  ),
+                  itemLabel: 'Page 4',
+                ),
+                const BottomBarItem(
+                  inActiveItem: Icon(
+                    Icons.person,
+                    color: Colors.blueGrey,
+                  ),
+                  activeItem: Icon(
+                    Icons.person,
+                    color: Colors.yellow,
+                  ),
+                  itemLabel: 'Page 5',
+                ),
+              ],
+              onTap: (index) {
+                /// perform action on tab change and to update pages you can update pages without pages
+                print('current selected index $index');
+                _pageController.jumpToPage(index);
+              },
+            )
           : null,
     );
   }
